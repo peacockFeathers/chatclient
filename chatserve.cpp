@@ -1,6 +1,13 @@
 #include <iostream>
+//#include sockets API
 
-int main(int argc, cost char * argv[]) {
+//def start_up
+
+//def send_message
+
+//def receive_message
+
+int main(int argc, const char * argv[]) { // take port number as an argument
     std::cout << "Hello, World!\n";
     return 0;
 }
