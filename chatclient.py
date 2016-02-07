@@ -11,6 +11,7 @@ def send_message(handle):
     # In Python3, Unicode issues necessitate the use of encode() and decode().
     sentence = ('From ' + handle + ': ' + input('Input message:')).encode() #raw_input() was replaced by input() in 3, too.
     client_socket.send(sentence)
+    print('Waiting for reply from server...')
 
 def receive_message():
     modified_sentence = client_socket.recv(1024)
@@ -25,10 +26,10 @@ if __name__ == '__main__':
         server_name = sys.argv[1]
         server_port = int(sys.argv[2]) # we're bringing this in as a string, so we have to typecast it
     
-    #prompt for handle
-    handle = 'Justin'
     client_socket = initiate_contact(server_name, server_port)
+    
+    #prompt for handle after we've established the connection, otherwise we're wasting our user's time if the connection fails
+    handle = input('Handle for future messages:')
     while 1:
         send_message(handle)
         receive_message()
-    
